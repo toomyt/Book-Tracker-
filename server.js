@@ -27,6 +27,14 @@ app.put('/books/:id', (req, res) => {
     res.json({ id, title, author, status });
 });
 
+app.delete('/books/:id', (req, res) => {
+    const { id } = req.params;
+    const { title, author, status } = req.body;
+    const stmt = db.prepare('DELETE FROM books WEHERE id = ?');
+    const result = stmt.run(id);
+    res.json({ id, title, author, status });
+})
+
 app.listen(3000, () => {
     console.log('Server is running on port 3000')
 });
