@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Book Tracker</title> 
+    </head>
+    <body>
+        <h1> Welcome to the Book Tracker!</h1>
+        <form id="book-form">
+            <label for="title">Enter book title:</label>
+            <input type="text" name="title" id="title" required>
+            <br>
+            <label for="author">Enter book author:</label>
+            <input type="text" name="author" id="author" required>
+            <br>
+            <label for="status">Enter book status:</label>
+            <select name="status" id="status" required>
+                <option value="to-read">To Read</option>
+                <option value="reading">Reading</option>
+                <option value="read">Read</option>
+            </select>
+            <br>
+            <button type="submit">Add Book</button>
+        </form>
+        <div id="book-list"></div>
+        <script src="app.js"></script>
+    </body>
+</html>

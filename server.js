@@ -2,8 +2,10 @@ const express = require('express');
 const app = express();
 const db = require('./database');
 app.use(express.json());
+app.use(express.static('public'));
 
-app.get('/', (req, res) => {
+
+app.get('', (req, res) => {
     res.send('Welcome to the Book Tracker API!');
 });
 
@@ -29,11 +31,10 @@ app.put('/books/:id', (req, res) => {
 
 app.delete('/books/:id', (req, res) => {
     const { id } = req.params;
-    const { title, author, status } = req.body;
-    const stmt = db.prepare('DELETE FROM books WEHERE id = ?');
+    const stmt = db.prepare('DELETE FROM books WHERE id = ?');
     const result = stmt.run(id);
-    res.json({ id, title, author, status });
-})
+    res.json({ message: `Book deleted successfully`, id });
+});
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000')
